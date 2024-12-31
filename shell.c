@@ -41,7 +41,6 @@ int shell_cd(char **args) {
 
 int shell_help(char **args) {
     int i;
-    printf("entering shell\n");
     printf("Brians Shell\n");
     printf("Type program names and arguments, and hit enter.\n");
     printf("The following are built in:\n");
@@ -60,6 +59,17 @@ void shell_loop(void){
     char *line;
     char **args;
     int status;
+
+    printf("[-----------------------------]\n");
+    printf("\033[1;31m");
+    printf("|--Welcome to Brian's Shell!--|\n");
+    printf("\033[0m");
+    printf("|----- helpful commands ------|\n");
+    printf("|    cd - change dir          |\n");
+    printf("|    help - help menu         |\n");
+    printf("|    exit - exit shell        |\n");
+    printf("-------------------------------\n");
+
 
     do {
         printf("> ");
@@ -129,7 +139,6 @@ char **shell_split_line(char *line) {
                 exit(EXIT_FAILURE);
             }
         }
-
         token = strtok(NULL, " \t\r\n\a");
     }
     tokens[pos] = NULL;
@@ -177,6 +186,7 @@ int shell_execute(char **args) {
 }
 
 int main(int argc, char **argv) {
+   
 
     shell_loop();
 
